@@ -26,7 +26,7 @@ fetch('http://localhost:8080/video/all')
 
 if(queryParams.video){
 
-    videoScreen.src = `http://localhost:8080/video/${queryParams.video}`;
+    videoScreen.src = 'http://localhost:8080/video/${queryParams.video}';
     videoDiv.style.display = 'block';
     document.querySelector('#now-playing')
         .innerText = 'Now playing ' + queryParams.video;
@@ -36,11 +36,13 @@ if(queryParams.video){
 form.addEventListener('submit', ev => {
     ev.preventDefault();
     let data = new FormData(form);
+    console.log("upload")
     fetch('http://localhost:8080/video', {
         method: 'POST',
         body: data
-    }).then(result => result.text()).then(_ => {
-        window.location.reload();
-    });
+    })
+//    .then(result => result.text()).then(_ => {
+//        window.location.reload();
+//    });
 
 });

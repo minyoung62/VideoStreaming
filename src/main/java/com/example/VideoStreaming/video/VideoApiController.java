@@ -1,6 +1,7 @@
 package com.example.VideoStreaming.video;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("video")
 @RequiredArgsConstructor
+@Slf4j
 public class VideoApiController {
 
     private final VideoService videoService;
@@ -20,6 +22,7 @@ public class VideoApiController {
     @PostMapping()
     public ResponseEntity<String> saveVideo(@RequestParam("file")MultipartFile file, @RequestParam("name") String name) throws IOException {
         videoService.saveVideo(file, name);
+        log.info("save");
         return ResponseEntity.ok("Video saved complete");
     }
 
