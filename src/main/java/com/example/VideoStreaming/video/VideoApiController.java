@@ -27,7 +27,9 @@ public class VideoApiController {
     }
 
     @GetMapping("{name}")
+
     public ResponseEntity<Resource> getVideoByName(@PathVariable("name") String name) {
+        System.out.println("name12" + name);
         return ResponseEntity
                 .ok(new ByteArrayResource(videoService.getVideo(name).getData()));
     }
